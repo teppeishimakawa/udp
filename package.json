@@ -1,0 +1,23 @@
+{
+  "name": "udp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "udpa.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teppeishimakawa/udp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/teppeishimakawa/udp/issues"
+  },
+  "homepage": "https://github.com/teppeishimakawa/udp#readme",
+  "dependencies": {
+    "dgram": "^1.0.1",
+    "socket.io": "^2.3.0"
+  }
+}

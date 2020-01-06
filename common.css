@@ -1,0 +1,15 @@
+.wrap {
+    height: 150px;
+    width:250px;
+    vertical-align: top;
+    background: #ccc;
+    text-align: center;
+    padding: 25px;
+    margin: 10px;
+    border-radius: 20px:
+}
+ 
+#gauge {
+    width:250px;
+    height:150px;
+}
