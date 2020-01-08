@@ -6,6 +6,7 @@ var http = require('http');
 var fs = require('fs');
 
 var needle;
+var time;
 
 
 var server=http.createServer(function(req, res)
@@ -102,9 +103,9 @@ socket.on('listening', () => {
 
 //socket.onでコンソールに表示
 socket.on('message', (message, remote) => {
-    console.log(remote.address + ':' + remote.port +' - ' + JSON.parse(message).value);
-    needle = Object.assign(JSON.parse(message).value);
-
+    console.log(remote.address + ':' + remote.port +' - ' + JSON.parse(message).num + " " + JSON.parse(message).time );
+    num = Object.assign(JSON.parse(message).num);
+    time = Object.assign(JSON.parse(message).time);
 //bから受信したカウントアップmessageをsendでaにエコーバック
     /* socket.send(message, 0, message.length, PORT_B, HOST_B, (err, bytes) => {
         if (err) throw err;
@@ -123,6 +124,6 @@ io.sockets.on('connection', function(socket)
 {
     socket.on('client_to_server', function(data) {
       //on:受信、emit:送信
-        io.sockets.emit('server_to_client',needle);
+        io.sockets.emit('server_to_client',num + "," + time);
     });
 });

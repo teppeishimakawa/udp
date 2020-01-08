@@ -1,6 +1,7 @@
 var socket = io.connect();
 
-var needle_rx;
+var num_rx;
+var time_rx;
 
 var test=null;
 
@@ -9,13 +10,11 @@ setInterval(function()
 socket.emit("client_to_server", "poling");
 socket.on("server_to_client", function(data)
   {
-    //console.log(data);
-    needle_rx = Object.assign(data);
-
+    num_rx = Object.assign(data.split(",")[0]);
+    time_rx = Object.assign(data.split(",")[1]);
   });
 
 },1000);
-
 
 
 
@@ -54,7 +53,10 @@ socket.on("server_to_client", function(data)
 
 
     setInterval(() => {
-  g.refresh(needle_rx);
-  console.log(needle_rx);
+  g.refresh(num_rx);
+  document.getElementById("time").innerHTML=time_rx;
+  console.log(num_rx);
+  console.log(time_rx);
+
 }, 1000)
 

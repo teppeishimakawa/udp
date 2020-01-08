@@ -39,9 +39,10 @@ var i=0;
 setInterval(() => {
 
 	count = csvdata[i][10];
-	i++
+    count2 = csvdata[i][8];
+    i++
 	//count = 15 + Math.floor(Math.random()*5*10)/10;
-    json={"time":new Date(),"value":count};
+    json={"num":count,"time":count2};
     json= JSON.stringify(json);
     const data = Buffer.from(String(json));
     socket.send(data, 0, data.length, PORT_A, HOST_A, (err, bytes) => {
