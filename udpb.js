@@ -24,7 +24,7 @@ setInterval(() => {
     });
 }, 500);
 
-
+//socket.onでコンソールに表示
 socket.on('message', (message, remote) => {
     console.log(remote.address + ':' + remote.port +' - ' + message);
 });

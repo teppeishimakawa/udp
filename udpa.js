@@ -80,10 +80,12 @@ const dgram = require('dgram');
 
 //rx
 const PORT_A = 3002;
+//const HOST_A = '192.168.11.36';
 const HOST_A = '127.0.0.1';
 
 //tx
 const PORT_B = 3003;
+//const HOST_B = '192.168.11.38';
 const HOST_B = '127.0.0.1';
 
 
