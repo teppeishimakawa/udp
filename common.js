@@ -14,7 +14,7 @@ socket.on("server_to_client", function(data)
 
   });
 
-},500);
+},1000);
 
 
 
@@ -23,7 +23,7 @@ socket.on("server_to_client", function(data)
     ({
     id: "gauge",
     value:0,
-    min: 0,
+    min: 15,
     max: 25,
     title: "Speed",
     label: "KM",
@@ -32,19 +32,29 @@ socket.on("server_to_client", function(data)
     decimals: 1,
     pointer: true,
     gaugeWidthScale: 0.3,
+    //levelColors:["#a9d70b", "#f9c802", "#ff0000"],
     customSectors: [{
         color: '#ff0000',
-        lo: 50,
-        hi: 100,
+        lo: 21,
+        hi: 25,
     }, {
-        color: '#00ff00',
-        lo: 0,
-        hi: 50,
+        color: '#ff7f50',
+        lo: 19,
+        hi: 21,
+    }, {
+        color: '#ffd700',
+        lo: 17,
+        hi: 19,
+    }, {
+        color: '#66cdaa',
+        lo: 15,
+        hi: 17,
     }],
     });
 
 
     setInterval(() => {
   g.refresh(needle_rx);
-}, 500)
+  console.log(needle_rx);
+}, 1000)
 

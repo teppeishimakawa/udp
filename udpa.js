@@ -1,4 +1,6 @@
-//受信用
+//受信用////////////////////
+
+//http://127.0.0.1:8080/index.htmlにアクセス
 
 var http = require('http');
 var fs = require('fs');

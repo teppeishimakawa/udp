@@ -1,4 +1,25 @@
-//送信用
+//送信用//////////////////////
+
+
+//csv読み込み用
+const fs = require('fs');
+const csv = require('csv');
+var csvdata;
+
+fs.createReadStream(__dirname + '/higashi.csv')
+  .pipe(csv.parse(function(err, data) {
+
+        console.log(data);
+        csvdata = Object.assign(data);
+
+  }));
+//
+
+
+
+
+
+
 
 const dgram = require('dgram');
 
@@ -13,20 +34,25 @@ const socket = dgram.createSocket('udp4');
 
 var count;
 var json;
+var i=0;
 
 setInterval(() => {
-	count = 15 + Math.floor(Math.random()*5*10)/10;
+
+	count = csvdata[i][10];
+	i++
+	//count = 15 + Math.floor(Math.random()*5*10)/10;
     json={"time":new Date(),"value":count};
     json= JSON.stringify(json);
     const data = Buffer.from(String(json));
     socket.send(data, 0, data.length, PORT_A, HOST_A, (err, bytes) => {
         if (err) throw err;
     });
-}, 500);
+}, 1000);
 
 //socket.onでコンソールに表示
 socket.on('message', (message, remote) => {
     console.log(remote.address + ':' + remote.port +' - ' + message);
+
 });
 
 socket.bind(PORT_B, HOST_B);
