@@ -76,20 +76,24 @@ var url = req.url;
 
 
 
-
+//送信側は相手先のipとportだけわかっていれば良い
 
 
 const dgram = require('dgram');
 
+
+//待ち受けport.ここが大事！//
 //rx
-const PORT_A = 3002;
-//const HOST_A = '192.168.11.36';
-const HOST_A = '127.0.0.1';
+const PORT_A = 4501;
+const HOST_A = '192.168.11.26';
+//const HOST_A = '127.0.0.1';
+
 
 //tx
-const PORT_B = 3003;
+const PORT_B = 4502;
 //const HOST_B = '192.168.11.38';
-const HOST_B = '127.0.0.1';
+//const HOST_B = '100.73.0.145';
+const HOST_B = '192.168.11.1';
 
 
 const socket = dgram.createSocket('udp4');
@@ -103,9 +107,14 @@ socket.on('listening', () => {
 
 //socket.onでコンソールに表示
 socket.on('message', (message, remote) => {
-    console.log(remote.address + ':' + remote.port +' - ' + JSON.parse(message).num + " " + JSON.parse(message).time );
-    num = Object.assign(JSON.parse(message).num);
-    time = Object.assign(JSON.parse(message).time);
+
+    //console.log(remote.address + ':' + remote.port +' - ' + message );
+    console.log(message);
+    //console.log("" + message);
+    test = Object.assign(message);
+    //console.log(remote.address + ':' + remote.port +' - ' + JSON.parse(message).num + " " + JSON.parse(message).time );
+    //num = Object.assign(JSON.parse(message).num);
+    //time = Object.assign(JSON.parse(message).time);
 //bから受信したカウントアップmessageをsendでaにエコーバック
     /* socket.send(message, 0, message.length, PORT_B, HOST_B, (err, bytes) => {
         if (err) throw err;
@@ -124,6 +133,6 @@ io.sockets.on('connection', function(socket)
 {
     socket.on('client_to_server', function(data) {
       //on:受信、emit:送信
-        io.sockets.emit('server_to_client',num + "," + time);
+        io.sockets.emit('server_to_client',test + "");
     });
 });

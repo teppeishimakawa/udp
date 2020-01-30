@@ -11,12 +11,35 @@
 </head>
 <body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
-    <div class="wrap">
-        <div id="gauge"></div>
-    </div>
+<script>
+//http://127.0.0.1:8080/index.html でアクセス
+var socket = io.connect();
+
+var num_rx;
+var time_rx;
+
+var test=null;
+
+setInterval(function()
+{
+socket.emit("client_to_server", "poling");
+socket.on("server_to_client", function(data)
+  {
+    time_rx = Object.assign(data);
+  });
+
+},1000);
+
+
+
+    setInterval(() => {
+  document.getElementById("time").innerHTML=time_rx;
+  console.log(time_rx);
+
+}, 1000)
+</script>
+
     <div id="time"></div>
-<script src="./raphael-2.1.4.min.js"></script>
-<script src="./justgage.js"></script>
-<script src="./common.js"></script>
+<p>test</p>
 </body>
 </html>
