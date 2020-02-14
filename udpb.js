@@ -14,7 +14,7 @@ const HOST_B ='192.168.11.26';
 
 //ここが大事！//
 const PORT_A = 3002;
-const HOST_A ='192.168.11.10';
+const HOST_A ='192.168.11.22';
 
 //以下はbind用
 const PORT_B = 3003;
@@ -89,27 +89,22 @@ var test2="3";
 //utf8:20 -> 文字:" " , utf8:30 -> 文字:"0"
 	count1 = String.fromCharCode(0x02) + csvdata1[i][2] + String.fromCharCode(0x03);
     count1 = count1.replace("." , "");
-    //count1[0] = 0x02;
 
     count2 = String.fromCharCode(0x02) + csvdata2[i][2]+ String.fromCharCode(0x03);
     count2 = count2.replace("." , "");
-//count2[0] =  0x02;
 
     count3 = String.fromCharCode(0x02) + csvdata3[i][2]+ String.fromCharCode(0x03);
     count3 = count3.replace("." , "");
-//count3[0] =  0x02;
 
     count4 = String.fromCharCode(0x02) + csvdata4[i][2]+ String.fromCharCode(0x03);
     count4 = count4.replace("." , "");
-//count4[0] =  0x02;
 
     count5 = String.fromCharCode(0x02) + csvdata5[i][2]+ String.fromCharCode(0x03);
     count5 = count5.replace("." , "");
-//count5[0] =  0x02;
 
     count6 = String.fromCharCode(0x02) + csvdata6[i][2]+ String.fromCharCode(0x03);
     count6 = count6.replace("." , "");
-//count5[0] =  0x02;
+
 
     socket.send(count1, 0, count1.length, PORT_A, HOST_A, (err, bytes) => {
         if (err) throw err;});
@@ -128,6 +123,9 @@ var test2="3";
 
     socket.send(count6, 0, count6.length, PORT_A, HOST_A, (err, bytes) => {
         if (err) throw err;});
+
+
+console.log(csvdata1[i][1]);
 
     i++;
 }, 1000);
