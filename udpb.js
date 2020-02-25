@@ -13,12 +13,12 @@ const HOST_B ='192.168.11.26';
 //送信側は相手先のipとportだけわかっていれば良い
 
 //ここが大事！//
-const PORT_A = 3002;
-const HOST_A ='192.168.11.22';
+const PORT_A = 9950;
+const HOST_A ='192.168.64.135';
 
 //以下はbind用
 const PORT_B = 3003;
-const HOST_B ='192.168.11.26';
+const HOST_B ='192.168.64.3';
 
 
 
@@ -27,7 +27,8 @@ const socket = dgram.createSocket('udp4');
 
 
 var json;
-//12:04:00からstart
+//12:04:00からstart  /240
+//5580
 var i=240;
 //npmからCSVモジュールをインストール
 
